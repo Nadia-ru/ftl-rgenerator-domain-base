@@ -15,6 +15,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class {{entity.nameUpper}}Doc {
     @Id
     {{#entityProperties}}
-            {{level}}{{type}}{{name}};
+     {{level}} {{type}} {{name}};
     {{/entityProperties}}
 }

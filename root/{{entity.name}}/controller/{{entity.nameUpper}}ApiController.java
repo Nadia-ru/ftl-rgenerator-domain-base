@@ -3,9 +3,7 @@ package {{path}}.{{entity.name}}.controller;
 import {{path}}.base.api.request.SearchRequest;
 import {{path}}.base.api.response.OkResponse;
 import {{path}}.base.api.response.SearchResponse;
-import {{path}}.{{entity.name}}.api.request.RegistrationRequest;
 import {{path}}.{{entity.name}}.api.request.{{entity.nameUpper}}Request;
-import {{path}}.{{entity.name}}.api.response.{{entity.nameUpper}}FullResponse;
 import {{path}}.{{entity.name}}.api.response.{{entity.nameUpper}}Response;
 import {{path}}.{{entity.name}}.exeception.{{entity.nameUpper}}ExistException;
 import {{path}}.{{entity.name}}.exeception.{{entity.nameUpper}}NotExistException;
@@ -25,7 +23,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Api(value = "{{entity.nameUpper}} api")
 public class {{entity.nameUpper}}ApiController {
-    private final {{entity.nameUpper}}ApiService {{entity.nameUpper}}ApiService;
+    private final {{entity.nameUpper}}ApiService {{entity.name}}ApiService;
 
     @PostMapping({{entity.nameUpper}}ApiRoutes.ROOT)
     @ApiOperation(value = "Create",notes="use this when you need create new {{entity.nameUpper}}")
@@ -33,8 +31,8 @@ public class {{entity.nameUpper}}ApiController {
            @ApiResponse(code = 200,message = "Success"),
            @ApiResponse(code = 400,message = "{{entity.nameUpper}} already exist")
     })
-    public OkResponse<{{entity.nameUpper}}Response> registration(@RequestBody RegistrationRequest request) throws {{entity.nameUpper}}ExistException {
-        return OkResponse.of({{entity.nameUpper}}Mapping.getInstance().getResponseFull().convert({{entity.nameUpper}}ApiService.create(request)));
+    public OkResponse<{{entity.nameUpper}}Response> registration(@RequestBody {{entity.nameUpper}}Request request) throws {{entity.nameUpper}}ExistException {
+        return OkResponse.of({{entity.nameUpper}}Mapping.getInstance().getResponseFull().convert({{entity.name}}ApiService.create(request)));
     }
 
     @GetMapping({{entity.nameUpper}}ApiRoutes.BY_ID)
@@ -45,7 +43,7 @@ public class {{entity.nameUpper}}ApiController {
     })
     public OkResponse<{{entity.nameUpper}}Response> byId( @ApiParam(value = "{{entity.nameUpper}} id")@PathVariable ObjectId id) throws ChangeSetPersister.NotFoundException {
     return  OkResponse.of({{entity.nameUpper}}Mapping.getInstance().getResponseFull().convert(
-            {{entity.nameUpper}}ApiService.findByID(id).orElseThrow(ChangeSetPersister.NotFoundException::new)
+            {{entity.name}}ApiService.findByID(id).orElseThrow(ChangeSetPersister.NotFoundException::new)
     ));
     }
     @GetMapping({{entity.nameUpper}}ApiRoutes.ROOT)
@@ -57,7 +55,7 @@ public class {{entity.nameUpper}}ApiController {
             @ModelAttribute SearchRequest request
             ){
         return  OkResponse.of({{entity.nameUpper}}Mapping.getInstance().getSearch().convert(
-                {{entity.name}}ApiService.search(request)
+                {{entity.nameUpper}}ApiService.search(request)
         ));
     }
 
@@ -67,7 +65,7 @@ public class {{entity.nameUpper}}ApiController {
             @ApiResponse(code = 200,message = "Success"),
             @ApiResponse(code = 400,message = "{{entity.nameUpper}} ID invalid"),
     })
-    public OkResponse<{{entity.nameUpper}}FullResponse> updateById(
+    public OkResponse<{{entity.nameUpper}}Response> updateById(
             @ApiParam(value = "{{entity.nameUpper}} id") @PathVariable String id,
             @RequestBody {{entity.nameUpper}}Request {{entity.name}}Request
             ) throws {{entity.nameUpper}}NotExistException {

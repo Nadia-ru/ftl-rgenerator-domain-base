@@ -14,6 +14,6 @@ import org.bson.types.ObjectId;
 @ApiModel(value ="{{entity.nameUpper}}Response",description = "{{entity.nameUpper}} data(for search and list)")
 public class {{entity.nameUpper}}Response {
         {{#entityProperties}}
-            protected {{type}}{{name}};
+            protected {{type}} {{name}};
         {{/entityProperties}}
 }
