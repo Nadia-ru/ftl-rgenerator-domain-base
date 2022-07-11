@@ -55,7 +55,7 @@ public class {{entity.nameUpper}}ApiController {
             @ModelAttribute SearchRequest request
             ){
         return  OkResponse.of({{entity.nameUpper}}Mapping.getInstance().getSearch().convert(
-                {{entity.nameUpper}}ApiService.search(request)
+                {{entity.name}}ApiService.search(request)
         ));
     }
 

@@ -3,7 +3,7 @@ package {{path}}.{{entity.name}}.service;
 import {{path}}.base.api.request.SearchRequest;
 import {{path}}.base.api.response.SearchResponse;
 import {{path}}.{{entity.name}}.api.request.{{entity.nameUpper}}Request;
-import {{path}}.{{entity.name}}.mapping.{{entity.nameUpper}Mapping;
+import {{path}}.{{entity.name}}.mapping.{{entity.nameUpper}}Mapping;
 import {{path}}.{{entity.name}}.api.response.{{entity.nameUpper}}Response;
 import {{path}}.{{entity.name}}.exeception.{{entity.nameUpper}}ExistException;
 import {{path}}.{{entity.name}}.exeception.{{entity.nameUpper}}NotExistException;
